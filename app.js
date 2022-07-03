@@ -16,8 +16,12 @@ app.get("/", (req, res) => {
     .search({
       q: "elon musk",
     })
-    .then((response) => {
-      console.log(response.data);
+    //.then((res) => res.json()) // return a promise containing the response
+    .then((json) => {
+      //console.log(response.data);
+      res.send(
+        `<h1>Got a response - trying to figure out how to handle it!</h1><p>Received ${json.data.count} podcast details in ${json.data.took} seconds</p>`
+      );
     })
     .catch((error) => {
       if (error.response) {
